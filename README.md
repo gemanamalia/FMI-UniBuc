@@ -1,2 +1,2 @@
 # FMI-UniBuc
-Faculty-related documents for stundes
+Faculty-related documents for students

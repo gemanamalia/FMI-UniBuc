@@ -1,7 +1,7 @@
 # SD - Tema 1
-
 Am implementat următorii algoritmi:
-Bubble Sort 
+
+Bubble Sort
 Count Sort
 Merge Sort
 Quick Sort

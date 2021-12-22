@@ -1,2 +1,2 @@
 # FMI-UniBuc
-Faculty-related documents for students.
+Faculty-related documents for students

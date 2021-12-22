@@ -18,7 +18,7 @@ Meniu interactiv – 0.5p
 Rezolvarea corectă a cerințelor suplimentare corespunzatoare fiecarei teme – 2p. 
 
 
-# Tema 9.
+Tema 9
 Se dau clasele: 
 
 -Avocat (int cod, string nume, int nr_procese, int *vector_procese) 

@@ -1,1 +1,1 @@
-Tema finală laborator ASC seria 13 - toate cerințele rezolvate
+Temă finală laborator ASC seria 13 - toate cerințele rezolvate

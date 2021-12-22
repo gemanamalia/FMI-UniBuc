@@ -1,0 +1,109 @@
+-- 11
+-- 1) Să se afișeze informații despre angajații al căror salariu depășește valoarea medie
+-- a salariilor colegilor sai care ocupa același post.
+SELECT employeelast as "Nume", employeefirst as "Prenume", salary as "Salariu", employeerolecode as "Cod job",
+(select role_description
+from employee_role
+where employeerolecode = e.employeerolecode) post_ocupat,
+(select avg(salary)
+from employees
+where employeerolecode = e.employeerolecode) salariu_mediu,
+(select count(*)
+from employees
+where employeerolecode = e.employeerolecode) nr_angajati_acelasi_job,
+( select count(*)
+  from orders
+  where employeeid = e.employeeid) mese_servite
+FROM employees e
+WHERE salary > ( select avg(salary) 
+                 from employees
+                 where employeerolecode = e.employeerolecode)
+ORDER BY(salary);
+
+
+-- 2) Să se afișeze numele, salariul și postul ocupat de anjatul cu codul '2222' (ospătar) și în plus
+-- codul comenzii cu val maximă de plătit, tipul de plată al comenzii respective și masa comenzii respective. 
+with smax as ( select max(p1.sumpayment) 
+               from payment p1
+               join orders o1 on (o1.employeeid = 2222 and o1.paymentid = p1.paymentid) )
+select initcap(e.employeelast) as "Nume", initcap(e.employeefirst) as "Prenume", e.salary as "Salariu", er.role_description as "Denumire job", o1.orderid as "Nr. comandă", upper(p1.paymenttype) as "Tip plată", t1.tableid as "Nr. masă"
+from employees e
+join employee_role er on (e.employeerolecode = er.employeerolecode)
+join orders o1 on (e.employeeid = o1.employeeid)
+join payment p1 on (p1.paymentid = o1.paymentid)
+join tables1 t1 on (t1.tableid = o1.tableid)
+where e.employeeid=2222 and p1.sumpayment = (select * from smax);
+
+
+-- 3) Să se afișeze numărul total de rezervări (un mesaj dacă nu au fost făcute rezervari) și, din acest total, numărul celor care au fost făcute în
+-- 2019, 2020 și în anul curent. Denumirea capetelor de tabel se va face corespunzător.
+select nvl(to_char(count(bookingid)), 'Nu au fost facute rezervari.') as "Rezervari",
+count (case when  to_char(date_b, 'YYYY') = '2019'  then 1 else NULL end)  as "2019",
+count(decode(to_char(date_b, 'YYYY'), 2020, bookingid)) as "2020",
+count(decode(to_char(sysdate,'yyyy'), 2021, bookingid)) as "2021"
+from booking, dual;
+
+
+-- 4) Să se afișeze numele și prenumele angajaților care s-au ocupat de cele mai multe comenzi
+-- ( în plus, vor fi afișați doar cu condiția că au preluat cel puțin o comandă).
+select e.employeelast, e.employeefirst
+from employees e
+where ( select count(o.employeeid)
+        from orders o
+        where o.employeeid = e.employeeid) = ( select max(count(o1.employeeid))
+                                               from orders o1
+                                               group by o1.employeeid having count(*) > 1)
+order by 1, 2;
+
+
+--5) Să se afișeze numele și prenumele (împreună pe aceeași coloană) angajaților care au servit la o masă unde clientul făcuse rezervare.
+select e.employeelast, e.employeefirst
+from employees e
+where e.employeeid in ( select o.employeeid
+                        from orders o
+                        where clientid in ( select c.clientid
+                                            from clients c
+                                            where c.clientid in ( select b.clientid
+                                                                  from booking b ) ) );
+
+
+
+-- 12
+-- UPDATE - Să se dubleze prețul produselor care au fost comandate minim o dată.
+SELECT * from menuitems;
+
+update menuitems set price = price*2
+where menuitemid in ( select i.menuitemid 
+                      from include1 i);
+
+SELECT * from menuitems;
+
+-- DELETE - Să se șteargă angajații care sunt ospătari și nu au servit la nicio comandă. (Ospătarii au codul jobului = 2)
+SELECT * from employees;
+
+delete from employees
+where employeerolecode = 2 
+and 
+      employeeid not in (select employeeid from orders);
+
+SELECT * from employees;
+
+
+-- UPDATE - Să se mărească salariul tuturor barmanilor de 1.3 ori.
+SELECT * from employees;
+
+update employees set salary = salary * 1.3
+where employeerolecode in ( select employeerolecode from employee_role 
+                            where upper(role_description) = 'BARMAN'); 
+
+SELECT * from employees;
+
+
+
+-- 13
+CREATE SEQUENCE insert_secv
+start with 1
+increment by 1
+minvalue 0
+maxvalue 5000
+nocycle;

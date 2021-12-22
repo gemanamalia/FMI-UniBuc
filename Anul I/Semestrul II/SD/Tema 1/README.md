@@ -1,5 +1,4 @@
 # SD - Tema 1
-
 Am implementat următorii algoritmi:
 1. Bubble Sort
 2. Count Sort

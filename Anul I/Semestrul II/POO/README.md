@@ -1,1 +1,1 @@
-Teme rezolvate în cadrul orelor de laborator
+Teme rezolvate în cadrul orelor de laborator :computer:

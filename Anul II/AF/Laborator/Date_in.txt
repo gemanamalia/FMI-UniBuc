@@ -1,0 +1,155 @@
+// Task 1: Date intrare DFS
+6 3
+1 2
+1 4
+3 5
+
+// Task 2: Date intrare BFS
+5 7 2
+1 2
+2 1
+2 2
+3 2
+2 5
+5 3
+4 5
+
+
+// Task 3: Date intrare CTC - Kosaraju
+8 12
+1 2
+2 6
+6 7
+7 6
+3 1
+3 4
+2 3
+4 5
+5 4
+6 5
+5 8
+8 7
+
+
+
+
+// Task 4: Date intrare Havel-Hakimi
+8
+3 7 2 1 3 4 2 1
+
+
+
+// Task 5: Date intrare Sortare Topologica
+9 8
+1 2
+1 3
+3 4
+3 5
+5 9
+4 6
+4 7
+4 8
+
+// Task 6: Date intrare Muchii critice
+4 4
+1 2
+2 3
+3 1
+2 4
+
+
+// Task 7: Date intrare Biconex
+8 9
+1 2
+2 3
+3 4
+4 1
+1 5
+5 6
+6 7
+7 5
+7 8
+
+// Task 8: APM
+9 14
+1 2 10
+1 3 -11
+2 4 11
+2 5 11
+5 6 13
+3 4 10
+4 6 12
+4 7 5
+3 7 4
+3 8 5
+8 7 5
+8 9 4
+9 7 3
+6 7 11
+
+SAU
+
+3 3
+1 2 -3
+2 3 -4
+3 1 -5
+
+// Task 9: Dijkstra
+5 6
+1 2 1
+1 4 2
+4 3 4
+2 3 2
+4 5 3
+3 5 6
+
+
+// Task 10: Bellman-Ford
+5 8
+1 3 -3
+1 5 7
+3 2 -2
+3 4 7
+5 1 4
+5 2 3
+5 3 4
+4 5 3
+
+// Task 11: Disjoint
+4 6
+1 1 2
+1 3 4
+2 1 3
+2 1 2
+1 1 3
+2 1 4
+
+// Task 12: Roy-Floyd
+5
+0 3 9 8 3
+5 0 1 4 2
+6 6 0 4 5
+2 9 2 0 7
+7 9 3 2 0
+
+// Task 13: Diametru arbore
+11
+1 2
+1 3
+1 4
+2 5
+3 6
+4 7
+5 8
+5 9
+6 10
+10 11
+
+// Task 14: Ciclu eulerian
+4 6
+1 2
+1 3
+2 2
+2 3
+3 4
+3 4

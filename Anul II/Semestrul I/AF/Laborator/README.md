@@ -1,4 +1,4 @@
-## Clasa finala Graf
+## Clasa finală Graf
 
 Codul conține o clasă concepută pentru un graf și rezolvă următoarele probleme:
 
